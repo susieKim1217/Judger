@@ -81,14 +81,14 @@ void child_process(FILE *log_fp, struct config *_config) {
         }
     }
 
-    if (_config->input_path[0] != NULL) {
+    if (_config->input_path[0] != nullptr) {
         input_file = tmpfile();
         if (input_file == NULL) {
             CHILD_ERROR_EXIT(DUP2_FAILED);
         }
         int i = 0;
-        while (_config->input_path[i] != NULL) {
-            fprintf(input_file, "%s\n", _config->input_path[i]);
+        while (_config->input_path[i] != nullptr) {
+            fprintf(input_file, "%s\n", (char *) _config->input_path[i]);
             i++;
         }
         rewind(input_file);
